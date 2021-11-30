@@ -1,0 +1,47 @@
+<template>
+  <div id="app">
+     <div id="nav">
+        <guest-nav v-if="!isLogged"></guest-nav>
+        <logged-nav v-else></logged-nav>
+      </div>
+    <b-container>
+     
+
+      <router-view/>
+    </b-container> 
+
+
+    <div class="loader position-absolute h-100 w-100 justify-content-center align-items-center"
+      style="z-index:10000;top:0; left: 0; background: #0000004f;"
+      v-show="loading"
+    > 
+      <b-spinner style="width: 5rem; height:5rem;" variant="primary" type="grow"></b-spinner>
+    </div>
+ <Footer></Footer></div>
+</template>
+
+<style scoped>
+  .loader{
+    display: flex;
+  }
+</style>
+
+<script>
+import { BSpinner } from 'bootstrap-vue'
+import { mapState } from 'vuex';
+
+import GuestNav from '@/components/layout/GuestNav.vue'
+import LoggedNav from '@/components/layout/LoggedNav.vue'
+import Footer from '@/components/layout/Footer.vue'
+
+export default {
+  name: "App",
+  components: {
+    BSpinner, GuestNav, LoggedNav,Footer
+  },
+  computed:{
+    ...mapState(['loading']),
+    ...mapState('auth', ['isLogged'])
+  }
+}
+</script>
