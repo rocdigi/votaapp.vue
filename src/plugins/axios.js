@@ -2,7 +2,8 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios'
 
-const baseURL = 'http://localhost:3000';
+//const baseURL = 'http://localhost:3000';
+const baseURL = 'https://votaappbk.herokuapp.com';
 axios.defaults.baseURL = baseURL;
 
 axios.interceptors.request.use(
