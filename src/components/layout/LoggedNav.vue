@@ -17,6 +17,7 @@
 
       <b-nav-item-dropdown text="Usuario" right>
         <b-dropdown-item href="#">Perfil</b-dropdown-item>
+        <b-dropdown-item v-if="personData.rol=='Admin'" exact :to="{name:'PersonList'}">Lista de Usuarios</b-dropdown-item>
         <b-dropdown-item @click="signOut">Cerrar Sesion</b-dropdown-item>
       </b-nav-item-dropdown>
     </b-navbar-nav>
@@ -26,7 +27,7 @@
 
 <script>
 import { BNav, BNavItem } from 'bootstrap-vue'
-import { mapMutations } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
 
 export default {
     name: "GuestNav",
@@ -39,6 +40,9 @@ export default {
             this.logout();
             this.$router.push('/login')
         }
+    },
+    computed: {
+        ...mapState('auth', ['personData'])
     }
 }
 </script>

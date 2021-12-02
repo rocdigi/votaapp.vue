@@ -32,7 +32,7 @@ const routes = [
     meta: { requiresAuth: true },
     children: [
       {
-        path: 'Persons',
+        path: 'Persons', name:'PersonList',
         component: () => import(/* webpackChunkName: "Persons" */ '../views/Persons.vue'),
       },      
     ]
