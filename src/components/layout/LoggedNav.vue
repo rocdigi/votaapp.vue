@@ -12,12 +12,11 @@
       <!-- Navbar dropdowns -->
       <b-nav-item-dropdown text="Configuracion" right>
         <b-dropdown-item exact to="/question/create">Preguntas</b-dropdown-item>
-        <b-dropdown-item exact to="/secret/persons">Administrar Votantes</b-dropdown-item>       
+        <b-dropdown-item v-if="personData.rol=='Admin'" exact :to="{name:'PersonList'}">Administrar Votantes</b-dropdown-item>       
       </b-nav-item-dropdown>
 
       <b-nav-item-dropdown text="Usuario" right>
         <b-dropdown-item href="#">Perfil</b-dropdown-item>
-        <b-dropdown-item v-if="personData.rol=='Admin'" exact :to="{name:'PersonList'}">Lista de Usuarios</b-dropdown-item>
         <b-dropdown-item @click="signOut">Cerrar Sesion</b-dropdown-item>
       </b-nav-item-dropdown>
     </b-navbar-nav>
